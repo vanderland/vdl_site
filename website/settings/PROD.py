@@ -29,14 +29,13 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-MY_VAR = "this_is_awesome"
+# MY_VAR = "this_is_awesome"
 API_KEY = os.environ.get("THIS_API_KEY")
 
 ALLOWED_HOSTS = [".vdl.com"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,9 +80,6 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-# SQL -> MySQL, PostgreSQL
-# NoSQL -> MongoDB -> Djongo
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -106,12 +102,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
 SECURE_HSTS_SECONDS             = 1000000
 SECURE_FRAME_DENY               = True
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-LOGIN_URL = "/login"
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -129,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
+# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -142,9 +132,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+#Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
 
 # Local static files (not being served ever)
@@ -152,10 +141,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-# CDN - Content Delivery Network - "SERVING" dir
-STATIC_ROOT = os.path.join(BASE_DIR, 'my_CDN', 'static')
+# Content Delivery Network - "SERVING" dir
+STATIC_ROOT = os.path.join(BASE_DIR, 'cdn', 'static')
 
 # model field models.FileField or models.ImageField uploads
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'my_CDN', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'cdn', 'media')
 

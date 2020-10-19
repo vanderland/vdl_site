@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block tab_content %} 
+    {{object.title}}
+{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+            <div class="row">
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+                <!-- Title -->
+                <h1 class="mt-4">Contact</h1>
+                <hr>
+                <!-- Post Content -->
+            <form method='POST' > 
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' value='Send' />
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

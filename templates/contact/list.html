@@ -1,0 +1,35 @@
+
+
+{% extends "base.html" %}
+
+{% block tab_content %} 
+    {{object.title}}
+{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+            <div class="row">
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+                <!-- Title -->
+                <h1 class="mt-4">Contact</h1>
+                <hr>
+                <!-- Post Content -->
+                {% if contact_list %}
+                    <ul>
+                    {% for contact in contact_list %}
+                        <li>
+                            <a href="{% url 'contact:update' contact.id %}">Update</a> 
+                            <a href="{% url 'contact:delete' contact.id %}">Delete</a> 
+                            {{ contact.name_first }} {{ contact.name_last }} {{ contact.email_address }}
+                        </li> 
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No contact available...</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
