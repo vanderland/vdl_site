@@ -1,23 +1,28 @@
 {% extends "base.html" %}
 
 {% block tab_content %} 
-    {{object.title}}
+    Email
 {% endblock %}
 
 {% block page_content %}
     <div class="container">
-            <div class="row">
-            <!-- Post Content Column -->
-            <div class="col-lg-8">
-                <!-- Title -->
-                <h1 class="mt-4">Contact</h1>
-                <hr>
-                <!-- Post Content -->
-            <form method='POST' > 
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type='submit' value='Send' />
-            </form>
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-4">Email</h1>
+                <hr>            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method='POST' > 
+                    {% csrf_token %}
+                    {% comment %} <table class="table table-sm table-borderless"> {% endcomment %}
+                    <div class="form-group">
+                    {{ form }}
+                    </div>
+                    {% comment %} </table> {% endcomment %}
+                    <input type='submit' class="btn btn-primary" value='Send Message' />
+                </form>
             </div>
         </div>
     </div>

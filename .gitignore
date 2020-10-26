@@ -144,3 +144,6 @@ cython_debug/
 
 #CDN collected files
 **/cdn/
+
+# local DBs
+/db.sqlite3

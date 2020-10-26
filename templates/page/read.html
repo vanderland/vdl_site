@@ -1,0 +1,42 @@
+
+
+{% extends "base.html" %}
+
+{% block tab_content %} 
+    {{object.title}}
+{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col">
+        <h1 class="mt-4">Page</h1>
+        <hr>
+        {% if page_read %}
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for page in page_read %}
+                        <tr>
+                            <td>{{ page.title }}</td>
+                            <td>{{ page.slug }}</td>
+                            <td>{{ page.name_last }}</td>
+                            <td><a href="{% url 'page:detail' slug=page.slug %}">View</a> </td>
+                            <td><a href="{% url 'page:update' page.id %}">Update</a> </td>
+                            <td><a href="{% url 'page:delete' page.id %}">Delete</a> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No page available...</p>
+        {% endif %}
+    </div>
+{% endblock %}

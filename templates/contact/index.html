@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block tab_content %} 
+    Contact Us
+{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-4">Contact Us</h1>
+            <hr>            
+            <p class="lead">If you have any questions about Company, Inc. please feel free to contact us.</p>            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card border-primary mb-5 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Mailling Address</h5>
+                    <p class="card-text">
+                            Company.com<br>
+                            123 Main Street<br>
+                            Any City, CA<br>
+                            USA</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card border-primary mb-5 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Email Contact</h5>
+                    <p class="card-text">Send us a message.</p>
+                    <a href="{% url 'contact:create' %}" class="btn btn-primary">Email</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card border-primary mb-5 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Phone Number</h5>
+                    <p class="card-text">1 800-123-1234</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

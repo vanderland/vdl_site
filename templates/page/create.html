@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block tab_content %} 
-    Contact
+    Email
 {% endblock %}
 
 {% block page_content %}
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="mt-4">Contact</h1>
+                <h1 class="mt-4">Page</h1>
                 <hr>            
             </div>
         </div>
@@ -16,11 +16,10 @@
             <div class="col">
                 <form method='POST' > 
                     {% csrf_token %}
-                    <table class="table table-sm table-borderless">
-                        {{ form.as_table }}
-                    </table>
-
-                    <input type='submit' class="btn btn-primary" value='Update' />
+                    <div class="form-group">
+                        {{ form }}
+                    </div>
+                    <input type='submit' class="btn btn-primary" value='Send Message' />
                 </form>
             </div>
         </div>

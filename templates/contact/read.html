@@ -1,0 +1,113 @@
+
+
+{% extends "base.html" %}
+
+{% block tab_content %} 
+    {{object.title}}
+{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+            <div class="row">
+            <!-- Post Content Column -->
+            <div class="col">
+                <!-- Title -->
+                <h1 class="mt-4">Contact</h1>
+                <hr>
+                <!-- Post Content -->
+                {% if contact_read %}
+                    {% for contact in contact_read %}
+                        <div class="card border-primary mb-5">
+                            <div class="card-header">
+                                <div class="float-left card-title">
+                                    <p class="mb-0"><strong>{{ contact.name_first }} {{ contact.name_middle }} {{ contact.name_last }}</strong></p>
+                                    <p class="mb-0"><small>{{ contact.email_address }}</small></p>
+                                </div>
+                                <div class="float-right text-sm-right"><p><small>{{ contact.created_on }}</small></p></div>
+                               
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ contact.subject }}</h5>
+                                <p class="card-text">{{ contact.message|safe }}</p>
+                                
+                            </div>
+                            <div class="card-footer">
+                                <p class="text-sm-right">
+                                    <a class="btn btn-success btn-sm" href="{% url 'contact:update' contact.id %}">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'contact:delete' contact.id %}">Delete</a> 
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                  {% endfor %}
+
+
+                <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center pagination-sm">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+
+                            {% with ''|center:page_obj.paginator.num_pages as range %}
+                                {% for _ in range %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                                {% endfor %}
+                            {% endwith %}    
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+                    {% endif %}
+
+                </ul>
+                </nav>
+
+
+
+
+                {% else %}
+                    <p>No contact available...</p>
+                {% endif %}
+
+
+
+{% comment %} 
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Middle Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email Address</th>
+                            <th scope="col">Created</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Subject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contact_read %}
+                            <tr>
+                                <td>{{ contact.name_first }}</td>
+                                <td>{{ contact.name_middle }}</td>
+                                <td>{{ contact.name_last }}</td>
+                                <td>{{ contact.email_address }}</td>
+                                <td>{{ contact.created_on }}</td>
+                                <td><a href="{% url 'contact:update' contact.id %}">Update</a> </td>
+                                <td><a href="{% url 'contact:delete' contact.id %}">Delete</a> </td>
+                            <tr>
+                            </tr>
+                                <td>{{ contact.subject }}</td>
+                            </tr>
+                        {% endfor %}
+                
+                    </tbody>
+                </table>
+      {% endcomment %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
